@@ -8,7 +8,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/meanjs/mean.git"
+    "url": "https://github.com/elvisun/YouTechApp.git"
   },
   "engines": {
     "node": ">=0.10.28",
