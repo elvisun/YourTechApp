@@ -12,13 +12,23 @@
             <p class="help-block error-text" ng-message="required">Job name is required.</p>
           </div>
         </div>
+
+        <div class="form-group">
+          <label class="control-label" for="date">Date</label>
+          <p class="input-group">
+            <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="status.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+            <span class="input-group-btn">
+              <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+          </p>
+        </div>
+
         <div class="form-group">
           <button type="submit" class="btn btn-default">{{vm.job._id ? 'Update' : 'Create'}}</button>
         </div>
         <div ng-show="vm.error" class="text-danger">
           <strong ng-bind="vm.error"></strong>
         </div>
-      </fieldset>
     </form>
   </div>
 </section>

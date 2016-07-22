@@ -3,7 +3,7 @@
 An app to connect customers and share information within YourTech 
 
 ## Get Started
-install node
+install <a href="https://nodejs.org/en/download/"> node.js </a>
 
 install dependencies
 ```
