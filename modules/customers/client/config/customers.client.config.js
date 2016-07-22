@@ -13,7 +13,7 @@
       title: 'Customers',
       state: 'customers',
       type: 'dropdown',
-      roles: ['*']
+      roles: ['user']
     });
 
     // Add the dropdown list item

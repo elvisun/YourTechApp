@@ -19,7 +19,8 @@
     // Add the dropdown list item
     Menus.addMenuItem('topbar', {
       title: 'View Jobs',
-      state: 'jobs.list'
+      state: 'jobs.list',
+      roles: ['user']
     });
 
     // Add the dropdown create item
@@ -30,4 +31,3 @@
     });
   }
 })();
-d
