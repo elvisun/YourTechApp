@@ -47,8 +47,8 @@ exports.read = function(req, res) {
  */
 exports.update = function(req, res) {
   var job = req.job ;
-
   job = _.extend(job , req.body);
+  console.log(job);
 
   job.save(function(err) {
     if (err) {

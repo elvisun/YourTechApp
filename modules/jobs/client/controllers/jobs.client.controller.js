@@ -29,13 +29,16 @@
     function save(isValid) {
       if (!isValid) {
         $scope.$broadcast('show-errors-check-validity', 'vm.form.jobForm');
+        vm.error = 'Invalid inputs'
         return false;
       }
 
       // TODO: move create/update logic to service
       if (vm.job._id) {
+        //console.log('asdfasdf');
         vm.job.$update(successCallback, errorCallback);
       } else {
+        //console.log('asdfasdf');
         vm.job.$save(successCallback, errorCallback);
       }
 
@@ -107,16 +110,5 @@
       }
       return '';
     };
-
-
-
-
-
-
-
-
-
-
-
   }
 })();

@@ -21,7 +21,7 @@
               </thead>
               <tbody ng-repeat="job in vm.jobs" ui-sref="jobs.view({jobId: job._id})">
                   <td> {{job.name}} </td>
-                  <td> {{job.user.displayName}} </td>
+                  <td> {{job.customer}} </td>
                   <td> {{job.created | date:'medium'}} </td>
                   <td> none </td>
                   <td> <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> </td>

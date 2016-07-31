@@ -3,7 +3,7 @@
     <h1>{{vm.job._id ? 'Edit Job' : 'New Job'}}</h1>
   </div>
   <div class="col-md-8">
-    <form name="vm.form.jobForm" class="form-horizontal" ng-submit="vm.save(vm.form.jobForm.$valid)" novalidate>
+    <form name="vm.form.jobForm" class="form-horizontal" ng-submit="vm.save(true)" novalidate>
       <fieldset>
         <div class="form-group" show-errors>
           <label class="control-label" for="name">Job Name</label>
@@ -55,13 +55,14 @@
           <textarea ng-model="vm.job.taskScope" class="form-control" rows="5"></textarea>
         </div>
 
-
         <div class="form-group">
           <button type="submit" class="btn btn-default">{{vm.job._id ? 'Update' : 'Create'}}</button>
         </div>
+
         <div ng-show="vm.error" class="text-danger">
           <strong ng-bind="vm.error"></strong>
         </div>
+      </fieldset>
     </form>
   </div>
 </section>

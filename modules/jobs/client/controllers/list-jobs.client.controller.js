@@ -9,7 +9,6 @@
 
   function JobsListController(JobsService) {
     var vm = this;
-
     vm.jobs = JobsService.query();
   }
 })();
