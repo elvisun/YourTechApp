@@ -15,6 +15,7 @@ var path = require('path'),
 exports.create = function(req, res) {
   var customer = new Customer(req.body);
   customer.user = req.user;
+  console.log(customer);
 
   customer.save(function(err) {
     if (err) {
@@ -48,6 +49,7 @@ exports.update = function(req, res) {
   var customer = req.customer ;
 
   customer = _.extend(customer , req.body);
+  console.log(customer);
 
   customer.save(function(err) {
     if (err) {

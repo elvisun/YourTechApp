@@ -6,13 +6,40 @@
     <tabset>
     <tab heading="Basic Info">
       <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        <div class="col-md-8 col-md-offset-2">
+          <div class="row">
+          <div class="col-md-4"><strong>Name: </strong></div>
+          <div class="col-md-8">{{vm.customer.name}} </div>
+          </div>
+
+          <div class="row">
+          <div class="col-md-4"><strong>Address: </strong></div>
+          <div class="col-md-8">{{vm.customer.address}} </div>
+          </div>
+
+          <div class="row">
+          <div class="col-md-4"><strong>Email: </strong></div>
+          <div class="col-md-8">{{vm.customer.email}} </div>
+          </div>
+
+          <div class="row">
+          <div class="col-md-4"><strong>Phone Number: </strong></div>
+          <div class="col-md-8">{{vm.customer.phoneNumber}} </div>
+          </div>
+
+          <div class="row">
+          <div class="col-md-4"><strong>Payment Method: </strong></div>
+          <div class="col-md-8">{{vm.customer.paymentMethod}} </div>
+          </div>
+
+
+          <div class="row">
+          <div class="col-md-4"><strong>Rating: </strong></div>
+          <div class="col-md-8">
+            <rating ng-model="vm.customer.rating" max="5" readonly="true"></rating>
+          </div>
+          </div>
+
         </div>
       </div>
     </tab>
@@ -20,25 +47,7 @@
     <tab heading="Past Jobs">
       <div class="row">
         <div class="col-md-6 col-md-offset-3">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </div>
-      </div>
-    </tab>
-
-    <tab heading="Pereference">
-      <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          <strong></strong>
         </div>
       </div>
     </tab>
@@ -46,12 +55,7 @@
     <tab heading="Notes">
       <div class="row">
         <div class="col-md-6 col-md-offset-3">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        {{vm.customer.notes}}
         </div>
       </div>
     </tab>

@@ -59,7 +59,8 @@
         },
         data:{
           pageTitle: 'Customer {{ articleResolve.name }}'
-        }
+        },
+        css: 'css/view-customer.css'
       });
   }
 
