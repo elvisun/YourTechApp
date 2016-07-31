@@ -15,14 +15,14 @@
 
         <div class="form-group">
           <label>Customer</label>
-          <input type="text" name="lname" class="form-control" placeholder="This will asyncly lookup customers">
+          <input type="text" name="lname" ng-model="vm.job.customer" class="form-control" placeholder="This will asyncly lookup customers" />
         </div>
 
 
         <div class="form-group">
           <label class="control-label" for="date">Date</label>
           <p class="input-group">
-            <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="status.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" show-weeks="false" show-button-bar="false"  />
+            <input ng-model="vm.job.appointmentDate" type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="status.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" show-weeks="false" show-button-bar="false"  />
             <span class="input-group-btn">
               <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
             </span>
@@ -31,13 +31,30 @@
 
         <div class="form-group">
           <label class="control-label">Appointment Time</label>
-          <timepicker ng-model="mytime" ng-change="changed()" hour-step="1" minute-step="1" show-meridian="true"></timepicker>
+          <timepicker ng-model="vm.job.appointmentTime" ng-change="changed()" hour-step="1" minute-step="1" show-meridian="true"></timepicker>
+        </div>
+
+
+        <div class="form-group">
+          <label class="control-label">Estimated Time</label>
+          <input ng-model="vm.job.estimatedTime" type="text" name="duration" class="form-control" placeholder="... minutes">
         </div>
 
         <div class="form-group">
-          <label class="control-label">Detail</label>
-          <textarea class="form-control" rows="5" id="detail"></textarea>
+          <label class="control-label">Location</label>
+          <input ng-model="vm.job.location" type="text" name="location" class="form-control" placeholder="1537 Richmond St, London, On">
         </div>
+
+        <div class="form-group">
+          <label class="control-label">Equipments</label>
+          <textarea ng-model="vm.job.equipments" class="form-control" rows="4"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label">Task Scope</label>
+          <textarea ng-model="vm.job.taskScope" class="form-control" rows="5"></textarea>
+        </div>
+
 
         <div class="form-group">
           <button type="submit" class="btn btn-default">{{vm.job._id ? 'Update' : 'Create'}}</button>

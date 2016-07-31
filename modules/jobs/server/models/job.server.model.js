@@ -25,12 +25,16 @@ var JobSchema = new Schema({
     ref: 'User'
   },
   status: {
-    type: Number,     // 0 for uncomplete, 1 for in progress, 2 for completed
-    default: 0   
+    type: String,     // 0 for uncomplete, 1 for in progress, 2 for completed
+    default: 'uncomplete'   
   },
-  customer: {
-    type: Schema.ObjectId,
-    ref: 'Customer'
+  customer: String,
+  // customer: {
+  //   type: Schema.ObjectId,
+  //   ref: 'Customer'
+  // },
+  appointmentDate: {
+    type: Date
   },
   appointmentTime: {
     type: Date
@@ -38,7 +42,7 @@ var JobSchema = new Schema({
   location: {
     type: String
   },
-  equipment: {
+  equipments: {
     type: String
   },
   estimatedTime: {
@@ -46,7 +50,7 @@ var JobSchema = new Schema({
   },
   taskScope: {
     type: String
-  },
+  }
 });
 
 mongoose.model('Job', JobSchema);

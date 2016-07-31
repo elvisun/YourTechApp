@@ -15,6 +15,7 @@ var path = require('path'),
 exports.create = function(req, res) {
   var job = new Job(req.body);
   job.user = req.user;
+  console.log(job);
 
   job.save(function(err) {
     if (err) {
