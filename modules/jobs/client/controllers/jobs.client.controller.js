@@ -29,7 +29,7 @@
     function save(isValid) {
       if (!isValid) {
         $scope.$broadcast('show-errors-check-validity', 'vm.form.jobForm');
-        vm.error = 'Invalid inputs'
+        vm.error = 'Invalid inputs';
         return false;
       }
 

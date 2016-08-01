@@ -7,9 +7,50 @@
     </div>
     <br>
     <div class="row">
-      <p class="lead">
-        This could be a dashboard to show a summary
-      </p>
+      <div class="col-lg-6 col-md-6">
+          <div class="panel panel-yellow">
+              <div class="panel-heading">
+                  <div class="row">
+                      <div class="col-xs-3">
+                          <i class="fa fa-user fa-5x"></i>
+                      </div>
+                      <div class="col-xs-9 text-right">
+                          <div class="huge">{{customers.length}}</div>
+                          <div>Customers</div>
+                      </div>
+                  </div>
+              </div>
+              <a href="#">
+                  <div class="panel-footer">
+                      <a href="/customers"><span class="pull-right">View Customers</span> </a>
+                      <div class="clearfix"></div>
+                  </div>
+              </a>
+          </div>
+      </div>
+      <div class="col-lg-6 col-md-6">
+          <div class="panel panel-green">
+              <div class="panel-heading">
+                  <div class="row">
+                      <div class="col-xs-3">
+                          <i class="fa fa-tasks fa-5x"></i>
+                      </div>
+                      <div class="col-xs-9 text-right">
+                          <div class="huge">{{jobs.length}}</div>
+                          <div>Jobs</div>
+                      </div>
+                  </div>
+              </div>
+              <a href="#">
+                  <div class="panel-footer">
+                      <a href="/jobs"><span class="pull-right">View Jobs</span>
+                      <div class="clearfix"></div></a>
+                  </div>
+              </a>
+          </div>
+      </div>
+
+
     </div>
     <div class="row">
       <p>
