@@ -5,35 +5,53 @@
   <div>
     <tabset>
     <tab heading="Basic Info">
-
-    </tab>
-
-    <tab heading="What's Important">
       <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
+        <div class="col-md-8 col-md-offset-2">
+          <div class="row">
+          <div class="col-md-4"><strong>Name: </strong></div>
+          <div class="col-md-8">{{vm.job.name}} </div>
+          </div>
+
+          <div class="row">
+          <div class="col-md-4"><strong>Customer: </strong></div>
+          <div class="col-md-8">{{vm.job.customer}} </div>
+          </div>
+
+          <div class="row">
+          <div class="col-md-4"><strong>Location: </strong></div>
+          <div class="col-md-8">{{vm.job.location}} </div>
+          </div>
+
+          <div class="row">
+          <div class="col-md-4"><strong>Date: </strong></div>
+          <div class="col-md-8">{{vm.job.appointmentDate | date:'yyyy-MMMM-dd'}} </div>
+          </div>
+
+          <div class="row">
+          <div class="col-md-4"><strong>Time: </strong></div>
+          <div class="col-md-8">{{vm.job.appointmentTime | date:'h:mm a'}} </div>
+          </div>
+
+          <div class="row">
+          <div class="col-md-4"><strong>Estimated Time: </strong></div>
+          <div class="col-md-8">{{vm.job.estimatedTime}} minutes</div>
+          </div>
         </div>
       </div>
     </tab>
 
-    <tab heading="Past Visits">
+    <tab heading="Equipments">
       <div class="row">
         <div class="col-md-6 col-md-offset-3">
-        Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        {{vm.job.equipments}}
         </div>
       </div>
     </tab>
 
-    <tab heading="Things to try">
+    <tab heading="Task Scope">
       <div class="row">
         <div class="col-md-6 col-md-offset-3">
-        Duis aute irure dolor in reprehenderit in voluptate velit esse
-        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        {{vm.job.taskScope}}
         </div>
       </div>
     </tab>
@@ -41,11 +59,7 @@
     <tab heading="Notes">
       <div class="row">
         <div class="col-md-6 col-md-offset-3">
-        Tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        {{vm.job.notes}}
         </div>
       </div>
     </tab>

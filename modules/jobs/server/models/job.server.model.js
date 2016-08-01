@@ -50,7 +50,8 @@ var JobSchema = new Schema({
   },
   taskScope: {
     type: String
-  }
+  },
+  notes: String
 });
 
 mongoose.model('Job', JobSchema);

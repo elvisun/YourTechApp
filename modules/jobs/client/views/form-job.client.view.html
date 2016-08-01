@@ -56,6 +56,11 @@
         </div>
 
         <div class="form-group">
+          <label class="control-label">Notes</label>
+          <textarea ng-model="vm.job.notes" class="form-control" rows="5"></textarea>
+        </div>
+
+        <div class="form-group">
           <button type="submit" class="btn btn-default">{{vm.job._id ? 'Update' : 'Create'}}</button>
         </div>
 
