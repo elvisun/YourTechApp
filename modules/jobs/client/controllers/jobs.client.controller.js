@@ -85,16 +85,16 @@
     var afterTomorrow = new Date();
     afterTomorrow.setDate(tomorrow.getDate() + 2);
     $scope.events =
-      [
-        {
-          date: tomorrow,
-          status: 'full'
-        },
-        {
-          date: afterTomorrow,
-          status: 'partially'
-        }
-      ];
+    [
+      {
+        date: tomorrow,
+        status: 'full'
+      },
+      {
+        date: afterTomorrow,
+        status: 'partially'
+      }
+    ];
 
     $scope.getDayClass = function(date, mode) {
       if (mode === 'day') {
