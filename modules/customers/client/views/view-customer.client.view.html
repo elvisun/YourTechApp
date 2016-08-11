@@ -60,6 +60,19 @@
       </div>
     </tab>
 
+    <tab heading="Subscription">h
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <form stripe-form="stripeCallback">
+              <input ng-model="number" placeholder="Card Number" />
+              <input ng-model="expiry" placeholder="Expiration" />
+              <input ng-model="cvc" placeholder="CVC" />
+              <button type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+    </tab>
+
 
   </tabset>
 
@@ -76,6 +89,7 @@
       <i class="glyphicon glyphicon-trash"></i>
     </a>
   </div>
+
   <small>
     <em class="text-muted">
       Posted on
@@ -87,4 +101,9 @@
     </em>
   </small>
   <p class="lead" data-ng-bind="vm.customer.content"></p>
+  <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+  <script>
+    //Stripe.setPublishableKey('pk_test_marMaaWHzbMssD7pvXBXZc2v');
+    console.log('asdfasdf');
+  </script>
 </section>

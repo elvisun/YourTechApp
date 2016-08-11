@@ -23,7 +23,7 @@
       if (confirm('Are you sure you want to delete?')) {
         vm.job.$remove($state.go('jobs.list'));
       }
-    }
+    } 
 
     // Save Job
     function save(isValid) {

@@ -6,9 +6,9 @@
     .module('customers')
     .controller('CustomersController', CustomersController);
 
-  CustomersController.$inject = ['$scope', '$state', 'Authentication', 'customerResolve'];
+  CustomersController.$inject = ['$scope', '$state', 'Authentication', 'customerResolve','$window'];
 
-  function CustomersController ($scope, $state, Authentication, customer) {
+  function CustomersController ($scope, $state, Authentication, customer, $window) {
     var vm = this;
 
     vm.authentication = Authentication;
@@ -17,6 +17,14 @@
     vm.form = {};
     vm.remove = remove;
     vm.save = save;
+
+    vm.stripeCallback = function (code, result) {
+      if (result.error) {
+          window.alert('it failed! error: ' + result.error.message);
+      } else {
+          window.alert('success! token: ' + result.id);
+      }
+    };
 
     // Remove existing Customer
     function remove() {

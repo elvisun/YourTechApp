@@ -1,5 +1,5 @@
 (function (app) {
   'use strict';
 
-  app.registerModule('customers');
+  app.registerModule('customers', ['angularPayments']);
 })(ApplicationConfiguration);
