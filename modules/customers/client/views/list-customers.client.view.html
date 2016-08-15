@@ -7,7 +7,7 @@
        data-ui-sref="customers.view({ customerId: customer._id })"
        class="list-group-item">
       <small class="list-group-item-text">
-        Posted on
+        Created on
         <span data-ng-bind="customer.created | date:'mediumDate'"></span>
         by
         <span data-ng-if="customer.user" data-ng-bind="customer.user.displayName"></span>

@@ -1,15 +1,14 @@
 (function () {
   'use strict';
 
-
   // Customers controller
   angular
     .module('customers')
     .controller('CustomersController', CustomersController);
 
-  CustomersController.$inject = ['$scope', '$state', 'Authentication', 'customerResolve','$window'];
+  CustomersController.$inject = ['$scope', '$state', 'Authentication', 'customerResolve','$window','$http'];
 
-  function CustomersController ($scope, $state, Authentication, customer, $window) {
+  function CustomersController ($scope, $state, Authentication, customer, $window,$http) {
     var vm = this;
 
     vm.authentication = Authentication;
@@ -21,9 +20,15 @@
 
     $scope.stripeCallback = function (code, result) {
       if (result.error) {
-          window.alert('it failed! error: ' + result.error.message);
+          console.log('it failed! error: ' + result.error.message);
       } else {
-          window.alert('success! token: ' + result.id);
+          console.log('success! token: ' + result.id);
+          $http.post('/api/customers/subscribe/' + customer._id,{stripeToken:result.id})
+            .then(function(response) {
+                vm.customer = response.data;
+              }, function(err){
+                vm.error = err.data.message;
+              });
       }
     };
 

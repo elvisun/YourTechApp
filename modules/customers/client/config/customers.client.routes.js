@@ -63,7 +63,7 @@
         css: 'css/view-customer.css'
       });
 
-    Stripe.setPublishableKey('pk_test_6pRNASCoBOKtIshFeQd4XMUh');
+    //Stripe.setPublishableKey('pk_test_marMaaWHzbMssD7pvXBXZc2v');
   }
 
   getCustomer.$inject = ['$stateParams', 'CustomersService'];

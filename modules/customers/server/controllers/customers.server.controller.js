@@ -7,7 +7,8 @@ var path = require('path'),
   mongoose = require('mongoose'),
   Customer = mongoose.model('Customer'),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
-  _ = require('lodash');
+  _ = require('lodash'),
+  stripe = require("stripe")("sk_test_rPjzGafM5XJhHF64SCMZlkXG");
 
 /**
  * Create a Customer
@@ -113,5 +114,30 @@ exports.customerByID = function(req, res, next, id) {
     }
     req.customer = customer;
     next();
+  });
+};
+
+
+/**
+ * Customer subscription using stripe
+ */
+
+exports.subscribe = function(req, res) {
+  var stripeToken = req.body.stripeToken;
+  var customer = req.customer;
+  stripe.customers.create({
+    source: stripeToken,
+    plan: "basic",
+    email: "payinguser@example.com"
+  }, function(err, subCallback) {
+    if (err) {
+      return res.status(400).send({
+        message: errorHandler.getErrorMessage(err)
+      });
+    } else {
+      customer = _.extend(customer,{subscription:true,subscriptionId:subCallback.id});
+      console.log(customer);
+      res.jsonp(customer);
+    }
   });
 };

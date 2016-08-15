@@ -44,7 +44,12 @@ var CustomerSchema = new Schema({
     type: String    // use stripe
   },
   pastJobs: String,
-  notes: String
+  notes: String,
+  subscription: {
+    type: Boolean,
+    default: false
+  },
+  subscriptionId: String
 });
 
 mongoose.model('Customer', CustomerSchema);
