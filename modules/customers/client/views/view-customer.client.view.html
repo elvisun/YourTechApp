@@ -60,13 +60,13 @@
       </div>
     </tab>
 
-    <tab heading="Subscription">h
+    <tab heading="Subscription">
       <div class="row">
         <div class="col-md-6 col-md-offset-3">
           <form stripe-form="stripeCallback">
-              <input ng-model="number" placeholder="Card Number" />
-              <input ng-model="expiry" placeholder="Expiration" />
-              <input ng-model="cvc" placeholder="CVC" />
+              <input ng-model="number" placeholder="Card Number" payments-format="card" payments-validate="card" />
+              <input ng-model="expiry" placeholder="Expiration" payments-format="expiry" payments-validate="expiry" />
+              <input ng-model="cvc" placeholder="CVC" payments-format="cvc" payments-validate="cvc" />
               <button type="submit">Submit</button>
           </form>
         </div>
@@ -101,9 +101,7 @@
     </em>
   </small>
   <p class="lead" data-ng-bind="vm.customer.content"></p>
-  <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
   <script>
-    //Stripe.setPublishableKey('pk_test_marMaaWHzbMssD7pvXBXZc2v');
-    console.log('asdfasdf');
+  Stripe.setPublishableKey('YOUR_PUBLISHABLE_KEY');
   </script>
 </section>

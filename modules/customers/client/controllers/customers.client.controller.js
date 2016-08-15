@@ -1,6 +1,7 @@
 (function () {
   'use strict';
 
+
   // Customers controller
   angular
     .module('customers')
@@ -18,7 +19,7 @@
     vm.remove = remove;
     vm.save = save;
 
-    vm.stripeCallback = function (code, result) {
+    $scope.stripeCallback = function (code, result) {
       if (result.error) {
           window.alert('it failed! error: ' + result.error.message);
       } else {
