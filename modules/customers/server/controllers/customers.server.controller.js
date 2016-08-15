@@ -136,8 +136,15 @@ exports.subscribe = function(req, res) {
       });
     } else {
       customer = _.extend(customer,{subscription:true,subscriptionId:subCallback.id});
-      console.log(customer);
-      res.jsonp(customer);
+      customer.save(function(err) {
+        if (err) {
+          return res.status(400).send({
+            message: errorHandler.getErrorMessage(err)
+          });
+        } else {
+          res.jsonp(customer);
+        }
+      });
     }
   });
 };
