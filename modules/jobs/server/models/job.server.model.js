@@ -28,15 +28,12 @@ var JobSchema = new Schema({
     type: String,     // 0 for uncomplete, 1 for in progress, 2 for completed
     default: 'uncomplete'   
   },
-  customer: String,
-  // customer: {
-  //   type: Schema.ObjectId,
-  //   ref: 'Customer'
-  // },
-  appointmentDate: {
-    type: Date
+  //customer: String,
+  customer: {
+    type: Schema.ObjectId,
+    ref: 'Customer'
   },
-  appointmentTime: {
+  appointmentDatetime: {
     type: Date
   },
   location: {

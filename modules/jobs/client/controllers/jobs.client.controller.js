@@ -6,9 +6,9 @@
     .module('jobs')
     .controller('JobsController', JobsController);
 
-  JobsController.$inject = ['$scope', '$state', 'Authentication', 'jobResolve'];
+  JobsController.$inject = ['$scope', '$state', 'Authentication', 'jobResolve','CustomersService'];
 
-  function JobsController ($scope, $state, Authentication, job) {
+  function JobsController ($scope, $state, Authentication, job, CustomersService) {
     var vm = this;
 
     vm.authentication = Authentication;
@@ -17,6 +17,10 @@
     vm.form = {};
     vm.remove = remove;
     vm.save = save;
+
+    vm.customers = CustomersService.query();
+
+    console.log(job);
 
     // Remove existing Job
     function remove() {
@@ -33,6 +37,7 @@
         return false;
       }
 
+      console.log(vm.job.appointmentDatetime);
       // TODO: move create/update logic to service
       if (vm.job._id) {
         //console.log('asdfasdf');

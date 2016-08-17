@@ -14,7 +14,7 @@
 
           <div class="row">
           <div class="col-md-4"><strong>Customer: </strong></div>
-          <div class="col-md-8">{{vm.job.customer}} </div>
+          <div class="col-md-8">{{vm.job.customer.name}} </div>
           </div>
 
           <div class="row">
@@ -24,12 +24,12 @@
 
           <div class="row">
           <div class="col-md-4"><strong>Date: </strong></div>
-          <div class="col-md-8">{{vm.job.appointmentDate | date:'yyyy-MMMM-dd'}} </div>
+          <div class="col-md-8">{{vm.job.appointmentDatetime | date:'yyyy-MMMM-dd'}} </div>
           </div>
 
           <div class="row">
           <div class="col-md-4"><strong>Time: </strong></div>
-          <div class="col-md-8">{{vm.job.appointmentTime | date:'h:mm a'}} </div>
+          <div class="col-md-8">{{vm.job.appointmentDatetime | date:'h:mm a'}} </div>
           </div>
 
           <div class="row">

@@ -15,14 +15,18 @@
 
         <div class="form-group">
           <label>Customer</label>
-          <input type="text" name="lname" ng-model="vm.job.customer" class="form-control" placeholder="This will asyncly lookup customers" />
+            <pre>{{vm.job.customer}}</pre>
+            <input type="text" ng-model="vm.job.customer" typeahead="customer as customer.name for customer in vm.customers | filter:{name:$viewValue} | limitTo:5" class="form-control" typeahead-no-results="noResults">
+            <div ng-show="noResults">
+              <i class="glyphicon glyphicon-remove"> </i> No Results Found. Please <a href="../customers/create"> create a new customer</a> first.
+            </div>
         </div>
 
 
         <div class="form-group">
           <label class="control-label" for="date">Date</label>
           <p class="input-group">
-            <input ng-model="vm.job.appointmentDate" type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="status.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" show-weeks="false" show-button-bar="false"  />
+            <input ng-model="vm.job.appointmentDatetime" type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="status.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" show-weeks="false" show-button-bar="false"  />
             <span class="input-group-btn">
               <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
             </span>
@@ -31,7 +35,7 @@
 
         <div class="form-group">
           <label class="control-label">Appointment Time</label>
-          <timepicker ng-model="vm.job.appointmentTime" ng-change="changed()" hour-step="1" minute-step="1" show-meridian="true"></timepicker>
+          <timepicker ng-model="vm.job.appointmentDatetime" ng-change="changed()" hour-step="1" minute-step="1" show-meridian="true"></timepicker>
         </div>
 
 
