@@ -67,9 +67,9 @@ change to icon -->
     <tab heading="Subscription">
       <div class="row">
         <div class="col-md-6 col-md-offset-3">
-          <h3>Current Subscription: {{vm.customer.subscription}} <- this will be an icon </h3>
+          <h3>Current Subscription:   <span class="fa fa-check pull-right" ng-show="vm.customer.subscription"></span> <span class="fa fa-times pull-right" ng-hide="vm.customer.subscription"></span> </h3>
           <div class="checkbox">
-            <label>
+            <label ng-hide="vm.customer.subscription">
               <input type="checkbox" ng-model=showForm>Add to Subscription list
             </label>
           </div>

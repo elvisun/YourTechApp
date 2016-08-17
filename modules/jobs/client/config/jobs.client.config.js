@@ -8,23 +8,22 @@
   menuConfig.$inject = ['Menus'];
 
   function menuConfig(Menus) {
-    // Set top bar menu items
-    // Menus.addMenuItem('topbar', {
-    //   title: 'Jobs',
-    //   state: 'jobs',
-    //   type: 'dropdown',
-    //   roles: ['*']
-    // });
-
-    // Add the dropdown list item
+    //Set top bar menu items
     Menus.addMenuItem('topbar', {
-      title: 'View Jobs',
-      state: 'jobs.list',
+      title: 'Jobs',
+      state: 'jobs',
+      type: 'dropdown',
       roles: ['user']
     });
 
+    // Add the dropdown list item
+    Menus.addSubMenuItem('topbar', 'jobs',{
+      title: 'View Jobs',
+      state: 'jobs.list',
+    });
+
     // Add the dropdown create item
-    Menus.addMenuItem('topbar', {
+    Menus.addSubMenuItem('topbar', 'jobs', {
       title: 'Create Job',
       state: 'jobs.create',
       roles: ['user']
