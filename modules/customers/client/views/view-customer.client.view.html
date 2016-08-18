@@ -68,33 +68,33 @@ change to icon -->
       <div class="row">
         <div class="col-md-6 col-md-offset-3">
           <h3>Current Subscription:   <span class="fa fa-check pull-right" ng-show="vm.customer.subscription"></span> <span class="fa fa-times pull-right" ng-hide="vm.customer.subscription"></span> </h3>
-          <div class="checkbox">
-            <label ng-hide="vm.customer.subscription">
+          <div class="checkbox" ng-hide="vm.customer.subscription">
+            <label>
               <input type="checkbox" ng-model=showForm>Add to Subscription list
             </label>
+          
+            <form stripe-form="stripeCallback" ng-show="showForm">
+            <h4>Credit Card Info</h4>
+              <div class="form-group">
+                <input class="form-control" ng-model="number" placeholder="Card Number" payments-format="card" payments-validate="card" />
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <input class="form-control" ng-model="expiry" placeholder="Expiration" payments-format="expiry" payments-validate="expiry" />
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <input class="form-control" ng-model="cvc" placeholder="CVC" payments-format="cvc" payments-validate="cvc" />
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </form>
           </div>
-
-          <form stripe-form="stripeCallback" ng-show="showForm">
-          <h4>Credit Card Info</h3>
-            <div class="form-group">
-              <input class="form-control" ng-model="number" placeholder="Card Number" payments-format="card" payments-validate="card" />
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group">
-                  <input class="form-control" ng-model="expiry" placeholder="Expiration" payments-format="expiry" payments-validate="expiry" />
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <input class="form-control" ng-model="cvc" placeholder="CVC" payments-format="cvc" payments-validate="cvc" />
-                </div>
-              </div>
-            </div>
-            <div class="form-group">
-              <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
-          </form>
         </div>
       </div>
     </tab>
