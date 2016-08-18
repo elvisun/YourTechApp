@@ -40,10 +40,8 @@
       console.log(vm.job.appointmentDatetime);
       // TODO: move create/update logic to service
       if (vm.job._id) {
-        //console.log('asdfasdf');
         vm.job.$update(successCallback, errorCallback);
       } else {
-        //console.log('asdfasdf');
         vm.job.$save(successCallback, errorCallback);
       }
 

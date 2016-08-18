@@ -37,18 +37,24 @@ var JobSchema = new Schema({
     type: Date
   },
   location: {
-    type: String
+    type: String, 
+    trim: true
   },
   equipments: {
-    type: String
+    type: String, 
+    trim: true
   },
   estimatedTime: {
     type: Number
   },
   taskScope: {
-    type: String
+    type: String, 
+    trim: true
   },
-  notes: String
+  notes: {
+    type: String, 
+    trim: true
+  }
 });
 
 mongoose.model('Job', JobSchema);
