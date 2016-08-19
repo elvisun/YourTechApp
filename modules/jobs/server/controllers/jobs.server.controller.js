@@ -81,7 +81,7 @@ exports.delete = function(req, res) {
  * List of Jobs
  */
 exports.list = function(req, res) { 
-  Job.find().sort('-created').populate('user', 'displayName').populate('customer','name').exec(function(err, jobs) {
+  Job.find().sort('-created').populate('user', 'displayName').populate('customer','name').populate('technician','displayName').exec(function(err, jobs) {
     if (err) {
       console.log(err);
       return res.status(400).send({
@@ -103,8 +103,7 @@ exports.jobByID = function(req, res, next, id) {
       message: 'Job is invalid'
     });
   }
-
-  Job.findById(id).populate('user', 'displayName').populate('customer','name').exec(function (err, job) {
+  Job.findById(id).populate('user', 'displayName').populate('customer','name').populate('technician','displayName').exec(function (err, job) {
     if (err) {
       return next(err);
     } else if (!job) {
@@ -114,5 +113,36 @@ exports.jobByID = function(req, res, next, id) {
     }
     req.job = job;
     next();
+  });
+};
+
+
+/**
+ * Take a job
+ */
+exports.take = function(req, res) {
+  var job = req.job;
+  job = _.extend(job , req.body);
+  job.technician = req.user;
+  console.log('take');
+  console.log(job);
+
+  job.save(function(err) {
+    if (err) {
+      return res.status(400).send({
+        message: errorHandler.getErrorMessage(err)
+      });
+    } else {
+      Job.findById(job._id).populate('user', 'displayName').populate('customer','name').populate('technician','displayName').exec(function (err, job) {
+        if (err) {
+          return next(err);
+        } else if (!job) {
+          return res.status(404).send({
+            message: 'No Job with that identifier has been found'
+          });
+        }
+        res.jsonp(job);
+      });
+    }
   });
 };

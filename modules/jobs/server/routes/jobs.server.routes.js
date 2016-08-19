@@ -17,6 +17,9 @@ module.exports = function(app) {
     .put(jobs.update)
     .delete(jobs.delete);
 
+  app.route('/api/jobs/takejob/:jobId').all(jobsPolicy.isAllowed)
+    .post(jobs.take);
+
   // Finish by binding the Job middleware
   app.param('jobId', jobs.jobByID);
 };

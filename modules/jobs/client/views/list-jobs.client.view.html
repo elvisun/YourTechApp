@@ -23,8 +23,8 @@
                   <td> {{job.name}} </td>
                   <td> {{job.customer.name}} </td>
                   <td> {{job.created | date:'MM/dd/yyyy  h:mma'}}</td>
-                  <td> none </td>
-                  <td> <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> </td>
+                  <td> {{job.technician.displayName}} </td>
+                  <td> <span ng-show="job.completed" class="glyphicon glyphicon-ok"></span> <span ng-hide="job.completed" class="glyphicon glyphicon-remove"></span> </td>
               </tbody>
             </table>
           </div>

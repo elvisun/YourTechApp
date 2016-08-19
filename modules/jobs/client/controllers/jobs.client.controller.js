@@ -6,9 +6,8 @@
     .module('jobs')
     .controller('JobsController', JobsController);
 
-  JobsController.$inject = ['$scope', '$state', 'Authentication', 'jobResolve','CustomersService'];
+  JobsController.$inject = ['$scope', '$state', 'Authentication', 'jobResolve','CustomersService','$http'];
 
-  function JobsController ($scope, $state, Authentication, job, CustomersService) {
     var vm = this;
 
     vm.authentication = Authentication;
@@ -17,6 +16,7 @@
     vm.form = {};
     vm.remove = remove;
     vm.save = save;
+    vm.takeJob = takeJob;
 
     vm.customers = CustomersService.query();
 
@@ -54,8 +54,6 @@
       }
     }
 
-
-
     $scope.open = function($event) {
       $scope.status.opened = true;
     };
@@ -65,5 +63,14 @@
     $scope.status = {
       opened: false
     };
+
+    function takeJob() {
+      vm.job.taken = true;
+      console.log(vm.job);
+        function successCallback(res) {
+      }, function errorCallback(res) {
+        console.log('errorCallback');
+      });
+    }
   }
 })();

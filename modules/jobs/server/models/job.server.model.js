@@ -24,11 +24,18 @@ var JobSchema = new Schema({
     type: Schema.ObjectId,
     ref: 'User'
   },
-  status: {
-    type: String,     // 0 for uncomplete, 1 for in progress, 2 for completed
-    default: 'uncomplete'   
+  taken: {
+    type: Boolean,
+    default: false
   },
-  //customer: String,
+  completed: {
+    type: Boolean,
+    default: false
+  },
+  technician: {
+    type:Schema.ObjectId,
+    ref: 'User'
+  },
   customer: {
     type: Schema.ObjectId,
     ref: 'Customer',

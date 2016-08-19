@@ -36,6 +36,22 @@
           <div class="col-md-4"><strong>Estimated Time: </strong></div>
           <div class="col-md-8">{{vm.job.estimatedTime}} minutes</div>
           </div>
+
+          <div class="row">
+          <div class="col-md-4"><strong>Technician: </strong></div>
+          <div class="col-md-8">{{vm.job.technician.displayName}} </div>
+          </div>
+
+          <div class="row">
+          <div class="col-md-4"><strong>Taken: </strong></div>
+          <div class="col-md-8">{{vm.job.taken}} </div>
+          </div>
+
+          <div class="row">
+          <div class="col-md-4"><strong>Completed: </strong></div>
+          <div class="col-md-8">{{vm.job.completed}} </div>
+          </div>
+
         </div>
       </div>
     </tab>
@@ -68,10 +84,9 @@
 
 
   <hr>
-  <div class="pull-right"
-       data-ng-show="vm.job.isCurrentUserOwner">
+  <div class="pull-right">
     <a class="btn btn-danger"
-       data-ui-sref="jobs.edit({ jobId: vm.job._id })">
+       ng-click="vm.takeJob()">
        Take this job
     </a>
     <a class="btn btn-primary"
@@ -79,6 +94,8 @@
       <i class="glyphicon glyphicon-edit"></i>
     </a>
   </div>
+
+
   <small>
     <em class="text-muted">
       Posted on
