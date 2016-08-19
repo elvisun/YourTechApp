@@ -35,8 +35,8 @@ exports.read = function(req, res) {
   // convert mongoose document to JSON
   var job = req.job ? req.job.toJSON() : {};
 
-  // NOTE: This field is NOT persisted to the database, since it doesn't exist in the Article model.
-  job.isCurrentUserOwner = true;
+  // NOTE: This field is NOT persisted to the database, since it doesn't exist in the model.
+  job.theOne = req.user && job.technician && job.technician._id.toString() === req.user._id.toString() ? true : false;;
 
   res.jsonp(job);
 };
@@ -124,8 +124,6 @@ exports.take = function(req, res) {
   var job = req.job;
   job = _.extend(job , req.body);
   job.technician = req.user;
-  console.log('take');
-  console.log(job);
 
   job.save(function(err) {
     if (err) {
@@ -143,6 +141,44 @@ exports.take = function(req, res) {
         }
         res.jsonp(job);
       });
+    }
+  });
+};
+
+
+/**
+ * Complete a job
+ */
+exports.complete = function(req, res) {
+  var job = req.job;
+  job = _.extend(job , req.body);
+
+  job.save(function(err) {
+    if (err) {
+      return res.status(400).send({
+        message: errorHandler.getErrorMessage(err)
+      });
+    } else {
+      res.jsonp(job);
+    }
+  });
+};
+
+
+/**
+ * Take a job
+ */
+exports.abandon = function(req, res) {
+  var job = req.job;
+  job = _.extend(job , req.body);
+
+  job.save(function(err) {
+    if (err) {
+      return res.status(400).send({
+        message: errorHandler.getErrorMessage(err)
+      });
+    } else {
+      res.jsonp(job);
     }
   });
 };

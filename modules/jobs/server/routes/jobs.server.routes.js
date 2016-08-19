@@ -20,6 +20,12 @@ module.exports = function(app) {
   app.route('/api/jobs/takejob/:jobId').all(jobsPolicy.isAllowed)
     .post(jobs.take);
 
+  app.route('/api/jobs/completejob/:jobId').all(jobsPolicy.isAllowed)
+    .post(jobs.complete);
+
+  app.route('/api/jobs/abandonjob/:jobId').all(jobsPolicy.isAllowed)
+    .post(jobs.abandon);
+
   // Finish by binding the Job middleware
   app.param('jobId', jobs.jobByID);
 };

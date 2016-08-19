@@ -18,6 +18,8 @@
     vm.remove = remove;
     vm.save = save;
     vm.takeJob = takeJob;
+    vm.completeJob = completeJob;
+    vm.abandonJob = abandonJob;
 
     vm.customers = CustomersService.query();
 
@@ -69,6 +71,30 @@
       vm.job.taken = true;
       console.log(vm.job);
       $http.post('/api/jobs/takejob/' + vm.job._id, vm.job).then(
+        function successCallback(res) {
+        vm.job = res.data;
+        vm.job.theOne = true;
+      }, function errorCallback(res) {
+        console.log('errorCallback');
+      });
+    }
+
+    function completeJob() {
+      vm.job.completed = true;
+      console.log(vm.job);
+      $http.post('/api/jobs/completejob/' + vm.job._id, vm.job).then(
+        function successCallback(res) {
+        vm.job = res.data;
+      }, function errorCallback(res) {
+        console.log('errorCallback');
+      });
+    }
+
+    function abandonJob() {
+      vm.job.taken = false;
+      vm.job.technician = null;
+      console.log(vm.job);
+      $http.post('/api/jobs/abandonjob/' + vm.job._id, vm.job).then(
         function successCallback(res) {
         vm.job = res.data;
       }, function errorCallback(res) {

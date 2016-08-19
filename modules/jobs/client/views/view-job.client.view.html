@@ -6,7 +6,7 @@
     <tabset>
     <tab heading="Basic Info">
       <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-8">
           <div class="row">
           <div class="col-md-4"><strong>Name: </strong></div>
           <div class="col-md-8">{{vm.job.name}} </div>
@@ -36,7 +36,8 @@
           <div class="col-md-4"><strong>Estimated Time: </strong></div>
           <div class="col-md-8">{{vm.job.estimatedTime}} minutes</div>
           </div>
-
+        </div>
+        <div class="col-md-4">
           <div class="row">
           <div class="col-md-4"><strong>Technician: </strong></div>
           <div class="col-md-8">{{vm.job.technician.displayName}} </div>
@@ -84,12 +85,18 @@
 
 
   <hr>
-  <div class="pull-right">
-    <a class="btn btn-danger"
+  <div class="pull-right" ng-hide="vm.job.completed">
+    <a ng-show="vm.job.theOne && vm.job.taken" class="btn btn-info" ng-click="vm.completeJob()">
+       Job completed
+    </a>
+    <a ng-show="vm.job.theOne && vm.job.taken" class="btn btn-warning" ng-click="vm.abandonJob()">
+       Abandon Job
+    </a>
+    <a ng-hide="vm.job.taken" class="btn btn-danger"
        ng-click="vm.takeJob()">
        Take this job
     </a>
-    <a class="btn btn-primary"
+    <a class="btn btn-default"
        data-ui-sref="jobs.edit({ jobId: vm.job._id })">
       <i class="glyphicon glyphicon-edit"></i>
     </a>
