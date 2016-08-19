@@ -32,6 +32,10 @@ var JobSchema = new Schema({
     type: Boolean,
     default: false
   },
+  actualTime: {
+    type: Number,
+    default: 0
+  },
   technician: {
     type:Schema.ObjectId,
     ref: 'User'

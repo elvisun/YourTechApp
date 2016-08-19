@@ -81,6 +81,7 @@
 
     function completeJob() {
       vm.job.completed = true;
+      vm.job.actualTime = vm.actualTime;
       console.log(vm.job);
       $http.post('/api/jobs/completejob/' + vm.job._id, vm.job).then(
         function successCallback(res) {

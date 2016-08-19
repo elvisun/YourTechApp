@@ -1,6 +1,8 @@
 <section>
   <div class="page-header">
     <h1 data-ng-bind="vm.job.name"></h1>
+    <a class="btn btn-default pull-right" data-ui-sref="jobs.edit({ jobId: vm.job._id })"><i class="glyphicon glyphicon-edit"></i>
+    </a>
   </div>
   <div>
     <tabset>
@@ -53,6 +55,11 @@
           <div class="col-md-8">{{vm.job.completed}} </div>
           </div>
 
+          <div class="row">
+          <div class="col-md-4"><strong>Actual Time: </strong></div>
+          <div class="col-md-8">{{vm.job.actualTime}} minutes</div>
+          </div>
+
         </div>
       </div>
     </tab>
@@ -85,33 +92,44 @@
 
 
   <hr>
-  <div class="pull-right" ng-hide="vm.job.completed">
-    <a ng-show="vm.job.theOne && vm.job.taken" class="btn btn-info" ng-click="vm.completeJob()">
-       Job completed
-    </a>
-    <a ng-show="vm.job.theOne && vm.job.taken" class="btn btn-warning" ng-click="vm.abandonJob()">
-       Abandon Job
-    </a>
-    <a ng-hide="vm.job.taken" class="btn btn-danger"
-       ng-click="vm.takeJob()">
-       Take this job
-    </a>
-    <a class="btn btn-default"
-       data-ui-sref="jobs.edit({ jobId: vm.job._id })">
-      <i class="glyphicon glyphicon-edit"></i>
-    </a>
+  <div class="row">
+    <div class="col-md-8">
+    <small>
+      <em class="text-muted">
+        Posted on
+        <span data-ng-bind="vm.job.created | date:'mediumDate'"></span>
+        by
+        <span data-ng-if="vm.job.user"
+              data-ng-bind="vm.job.user.displayName"></span>
+        <span data-ng-if="!vm.job.user">Deleted User</span>
+      </em>
+    </small>
+    <p class="lead" data-ng-bind="vm.job.content"></p>
+    </div>
+
+    <div class="col-md-4">
+      <div class="pull-right" ng-hide="vm.job.completed">
+        <div class="input-group">
+          <input class="form-control" placeholder="actual time spent" name="actualTime" ng-model="vm.actualTime" ng-show="vm.job.theOne && vm.job.taken">
+          <div class="input-group-btn">
+            <a ng-show="vm.job.theOne && vm.job.taken" class="btn btn-info" ng-click="vm.completeJob()">
+             Job completed
+            </a>
+            <a ng-show="vm.job.theOne && vm.job.taken" class="btn btn-warning" ng-click="vm.abandonJob()">
+           Abandon Job
+            </a>
+          </div>
+        </div>
+       
+        <a ng-hide="vm.job.taken" class="btn btn-danger"
+           ng-click="vm.takeJob()">
+           Take this job
+        </a>
+      </div>
+    </div>
+
   </div>
 
 
-  <small>
-    <em class="text-muted">
-      Posted on
-      <span data-ng-bind="vm.job.created | date:'mediumDate'"></span>
-      by
-      <span data-ng-if="vm.job.user"
-            data-ng-bind="vm.job.user.displayName"></span>
-      <span data-ng-if="!vm.job.user">Deleted User</span>
-    </em>
-  </small>
-  <p class="lead" data-ng-bind="vm.job.content"></p>
+
 </section>

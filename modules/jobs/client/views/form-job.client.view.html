@@ -15,7 +15,7 @@
 
         <div class="form-group" show-errors>
           <label class="control-label" for="customer">Customer</label>
-            <input name="customer" type="text" ng-model="vm.job.customer" typeahead="customer as customer.name for customer in vm.customers | filter:{name:$viewValue} | limitTo:5" class="form-control" typeahead-no-results="noResults" required>
+            <input name="customer" type="text" ng-model="vm.job.customer" typeahead="customer as customer.name for customer in vm.customers | filter:{name:$viewValue} | limitTo:5" class="form-control" typeahead-no-results="noResults" placeholder="Select from customer list" required>
             <div ng-messages="vm.form.jobForm.customer.$error" role="alert">
               <p class="help-block error-text" ng-message="required">Customer is required.</p>
             </div>

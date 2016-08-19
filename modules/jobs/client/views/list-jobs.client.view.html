@@ -22,7 +22,7 @@
               <tbody ng-repeat="job in vm.jobs" ui-sref="jobs.view({jobId: job._id})">
                   <td> {{job.name}} </td>
                   <td> {{job.customer.name}} </td>
-                  <td> {{job.created | date:'MM/dd/yyyy  h:mma'}}</td>
+                  <td> {{job.appointmentDatetime | date:'MM/dd/yyyy  h:mma'}}</td>
                   <td> {{job.technician.displayName}} </td>
                   <td> <span ng-show="job.completed" class="glyphicon glyphicon-ok"></span> <span ng-hide="job.completed" class="glyphicon glyphicon-remove"></span> </td>
               </tbody>
