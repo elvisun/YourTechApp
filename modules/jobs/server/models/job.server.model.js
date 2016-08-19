@@ -31,7 +31,8 @@ var JobSchema = new Schema({
   //customer: String,
   customer: {
     type: Schema.ObjectId,
-    ref: 'Customer'
+    ref: 'Customer',
+    required: 'Please fill Customer name'
   },
   appointmentDatetime: {
     type: Date

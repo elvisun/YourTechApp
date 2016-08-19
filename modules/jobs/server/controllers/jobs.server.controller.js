@@ -35,9 +35,8 @@ exports.read = function(req, res) {
   // convert mongoose document to JSON
   var job = req.job ? req.job.toJSON() : {};
 
-  // Add a custom field to the Article, for determining if the current User is the "owner".
   // NOTE: This field is NOT persisted to the database, since it doesn't exist in the Article model.
-  job.isCurrentUserOwner = req.user && job.user && job.user._id.toString() === req.user._id.toString() ? true : false;
+  job.isCurrentUserOwner = true;
 
   res.jsonp(job);
 };
@@ -46,9 +45,9 @@ exports.read = function(req, res) {
  * Update a Job
  */
 exports.update = function(req, res) {
-  var job = req.job ;
+  var job = req.job;
   job = _.extend(job , req.body);
-  console.log(job);
+  console.log(req.body);
 
   job.save(function(err) {
     if (err) {
@@ -82,8 +81,9 @@ exports.delete = function(req, res) {
  * List of Jobs
  */
 exports.list = function(req, res) { 
-  Job.find().sort('-created').populate('user', 'displayName').exec(function(err, jobs) {
+  Job.find().sort('-created').populate('user', 'displayName').populate('customer','name').exec(function(err, jobs) {
     if (err) {
+      console.log(err);
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
       });
@@ -104,7 +104,7 @@ exports.jobByID = function(req, res, next, id) {
     });
   }
 
-  Job.findById(id).populate('user', 'displayName').exec(function (err, job) {
+  Job.findById(id).populate('user', 'displayName').populate('customer','name').exec(function (err, job) {
     if (err) {
       return next(err);
     } else if (!job) {
