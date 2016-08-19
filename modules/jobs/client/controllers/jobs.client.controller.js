@@ -8,6 +8,7 @@
 
   JobsController.$inject = ['$scope', '$state', 'Authentication', 'jobResolve','CustomersService','$http'];
 
+  function JobsController ($scope, $state, Authentication, job, CustomersService, $http) {
     var vm = this;
 
     vm.authentication = Authentication;
@@ -67,7 +68,9 @@
     function takeJob() {
       vm.job.taken = true;
       console.log(vm.job);
+      $http.post('/api/jobs/takejob/' + vm.job._id, vm.job).then(
         function successCallback(res) {
+        vm.job = res.data;
       }, function errorCallback(res) {
         console.log('errorCallback');
       });
