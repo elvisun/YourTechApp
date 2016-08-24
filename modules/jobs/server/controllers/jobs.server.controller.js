@@ -36,7 +36,7 @@ exports.read = function(req, res) {
   var job = req.job ? req.job.toJSON() : {};
 
   // NOTE: This field is NOT persisted to the database, since it doesn't exist in the model.
-  job.theOne = req.user && job.technician && job.technician._id.toString() === req.user._id.toString() ? true : false;;
+  job.theOne = req.user && job.technician && job.technician._id.toString() === req.user._id.toString() ? true : false;
 
   res.jsonp(job);
 };
@@ -120,7 +120,7 @@ exports.jobByID = function(req, res, next, id) {
 /**
  * Take a job
  */
-exports.take = function(req, res) {
+exports.take = function(req, res, next) {
   var job = req.job;
   job = _.extend(job , req.body);
   job.technician = req.user;

@@ -18,7 +18,7 @@ module.exports = function(app) {
     .delete(customers.delete);
 
   app.route('/api/customers/subscribe/:customerId').all(customersPolicy.isAllowed)
-    .post(customers.subscribe)
+    .post(customers.subscribe);
 
   // Finish by binding the Customer middleware
   app.param('customerId', customers.customerByID);

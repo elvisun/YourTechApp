@@ -20,15 +20,15 @@
 
     $scope.stripeCallback = function (code, result) {
       if (result.error) {
-          console.log('it failed! error: ' + result.error.message);
+        console.log('it failed! error: ' + result.error.message);
       } else {
-          console.log('success! token: ' + result.id);
-          $http.post('/api/customers/subscribe/' + customer._id,{stripeToken:result.id})
-            .then(function(response) {
-                vm.customer = response.data;
-              }, function(err){
-                vm.error = err.data.message;
-              });
+        console.log('success! token: ' + result.id);
+        $http.post('/api/customers/subscribe/' + customer._id,{ stripeToken:result.id })
+          .then(function(response) {
+            vm.customer = response.data;
+          }, function(err){
+            vm.error = err.data.message;
+          });
       }
     };
 

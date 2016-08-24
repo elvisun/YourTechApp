@@ -135,7 +135,7 @@ exports.subscribe = function(req, res) {
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      customer = _.extend(customer,{subscription:true,subscriptionId:subCallback.id});
+      customer = _.extend(customer,{ subscription:true,subscriptionId:subCallback.id });
       customer.save(function(err) {
         if (err) {
           return res.status(400).send({

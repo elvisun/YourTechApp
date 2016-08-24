@@ -72,11 +72,12 @@
       console.log(vm.job);
       $http.post('/api/jobs/takejob/' + vm.job._id, vm.job).then(
         function successCallback(res) {
-        vm.job = res.data;
-        vm.job.theOne = true;
-      }, function errorCallback(res) {
-        console.log('errorCallback');
-      });
+          vm.job = res.data;
+          vm.job.theOne = true;
+        }, 
+        function errorCallback(res) {
+          console.log('errorCallback');
+        });
     }
 
     function completeJob() {
@@ -85,10 +86,11 @@
       console.log(vm.job);
       $http.post('/api/jobs/completejob/' + vm.job._id, vm.job).then(
         function successCallback(res) {
-        vm.job = res.data;
-      }, function errorCallback(res) {
-        console.log('errorCallback');
-      });
+          vm.job = res.data;
+        }, 
+        function errorCallback(res) {
+          console.log('errorCallback');
+        });
     }
 
     function abandonJob() {
@@ -97,10 +99,11 @@
       console.log(vm.job);
       $http.post('/api/jobs/abandonjob/' + vm.job._id, vm.job).then(
         function successCallback(res) {
-        vm.job = res.data;
-      }, function errorCallback(res) {
-        console.log('errorCallback');
-      });
+          vm.job = res.data;
+        }, 
+        function errorCallback(res) {
+          console.log('errorCallback');
+        });
     }
   }
 })();
