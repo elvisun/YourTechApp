@@ -13,38 +13,37 @@
               <thead>
                 <tr>
                   <th>
-                    <a href="#" ng-click="vm.sortType = 'name'">
+                    <a href="#" ng-click="sortType = 'name'">
                       Job Name 
-                      <span ng-show="vm.sortType == 'name'; vm.sortReverse = !vm.sortReverse"" class="fa fa-caret-down"></span>
+                      <span ng-show="sortType == 'name'; sortReverse = !sortReverse"" class="fa fa-caret-down"></span>
                     </a>
                   </th>
                   <th>
-                    <a href="#" ng-click="vm.sortType = 'customer.name'">
+                    <a href="#" ng-click="sortType = 'customer.name'">
                       Customer 
-                      <span ng-show="vm.sortType == 'customer.name'; vm.sortReverse = !vm.sortReverse"" class="fa fa-caret-down"></span>
+                      <span ng-show="sortType == 'customer.name'; sortReverse = !sortReverse"" class="fa fa-caret-down"></span>
                     </a>
                   </th>
                   <th>
-                    <a href="#" ng-click="vm.sortType = 'appointmentDatetime'">
+                    <a href="#" ng-click="sortType = 'appointmentDatetime'">
                       Time
-                      <span ng-show="vm.sortType == 'appointmentDatetime'; vm.sortReverse = !vm.sortReverse"" class="fa fa-caret-down"></span>
+                      <span ng-show="sortType == 'appointmentDatetime'; sortReverse = !sortReverse"" class="fa fa-caret-down"></span>
                     </a>
                   </th>
                   <th>
-                    <a href="#" ng-click="vm.sortType = 'technician.displayName'">
+                    <a href="#" ng-click="sortType = 'technician.displayName'">
                       Technician 
-                      <span ng-show="vm.sortType == 'technician.displayName'; vm.sortReverse = !vm.sortReverse"" class="fa fa-caret-down"></span>
+                      <span ng-show="sortType == 'technician.displayName'; sortReverse = !sortReverse"" class="fa fa-caret-down"></span>
                     </a>
                   </th>
                   <th>
-                    <a href="#" ng-click="vm.sortType = 'completed'">
+                    <a href="#" ng-click="sortType = 'completed'">
                       Done
-                      <span ng-show="vm.sortType == 'completed'; vm.sortReverse = !vm.sortReverse"" class="fa fa-caret-down"></span>
-                    </a>
-                  </th> 
+                      <span ng-show="sortType == 'completed'; sortReverse = !sortReverse"" class="fa fa-caret-down"></span>
+                  </th>
                 </tr>
               </thead>
-              <tbody ng-repeat="job in vm.jobs | orderBy:vm.sortType:vm.sortReverse" ui-sref="jobs.view({jobId: job._id})">
+              <tbody ng-repeat="job in vm.jobs | orderBy:sortType:sortReverse" ui-sref="jobs.view({jobId: job._id})">
                   <td> {{job.name}} </td>
                   <td> {{job.customer.name}} </td>
                   <td> {{job.appointmentDatetime | date:'MM/dd/yyyy  h:mma'}}</td>
