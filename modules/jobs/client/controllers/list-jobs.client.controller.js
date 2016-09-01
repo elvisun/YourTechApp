@@ -9,8 +9,10 @@
 
   function JobsListController(JobsService) {
     var vm = this;
+    vm.jobs = [];
     vm.jobs = JobsService.query();
-    this.sortType = 'completed';
-    this.searchField = '';
+    vm.sortType = 'completed';
+    vm.sortReverse = false;
+    vm.searchField = '';
   }
 })();

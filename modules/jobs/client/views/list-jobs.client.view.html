@@ -6,50 +6,57 @@
     <div class="col-lg-12">
       <div class="panel panel-default">
         <div class="panel-body">
-          <button class="btn btn-primary pull-right" ui-sref="jobs.create">create job</button>
+          <div class="pull-left">
+          <input type="text" ng-model="vm.search" class="form-control" placeholder="search...">
+          </div>
+          <div class="pull-right">
+          <button class="btn btn-primary" ui-sref="jobs.create">create job</button>
+          </div>
           <br><br>
           <div class="dataTable_wrapper">
-            <table width="100%" class="table table-bordered table-hover">
+            <table width="100%" class="table table-bordered table-hover table-striped">
               <thead>
                 <tr>
-                  <th>
-                    <a href="#" ng-click="vm.sortType = 'name'">
+                  <td>
+                    <a href="#" ng-click="vm.sortType = 'name'; vm.sortReverse = !vm.sortReverse">
                       Job Name 
-                      <span ng-show="vm.sortType == 'name'; vm.sortReverse = !vm.sortReverse"" class="fa fa-caret-down"></span>
+                      <span ng-show="vm.sortType == 'name'" class="fa fa-caret-down"></span>
                     </a>
-                  </th>
-                  <th>
-                    <a href="#" ng-click="vm.sortType = 'customer.name'">
+                  </td>
+                  <td>
+                    <a href="#" ng-click="vm.sortType = 'customer.name'; vm.sortReverse = !vm.sortReverse">
                       Customer 
-                      <span ng-show="vm.sortType == 'customer.name'; vm.sortReverse = !vm.sortReverse"" class="fa fa-caret-down"></span>
+                      <span ng-show="vm.sortType == 'customer.name'" class="fa fa-caret-down"></span>
                     </a>
-                  </th>
-                  <th>
-                    <a href="#" ng-click="vm.sortType = 'appointmentDatetime'">
+                  </td>
+                  <td>
+                    <a href="#" ng-click="vm.sortType = 'appointmentDatetime'; vm.sortReverse = !vm.sortReverse">
                       Time
-                      <span ng-show="vm.sortType == 'appointmentDatetime'; vm.sortReverse = !vm.sortReverse"" class="fa fa-caret-down"></span>
+                      <span ng-show="vm.sortType == 'appointmentDatetime'" class="fa fa-caret-down"></span>
                     </a>
-                  </th>
-                  <th>
-                    <a href="#" ng-click="vm.sortType = 'technician.displayName'">
+                  </td>
+                  <td>
+                    <a href="#" ng-click="vm.sortType = 'technician.displayName'; vm.sortReverse = !vm.sortReverse">
                       Technician 
-                      <span ng-show="vm.sortType == 'technician.displayName'; vm.sortReverse = !vm.sortReverse"" class="fa fa-caret-down"></span>
+                      <span ng-show="vm.sortType == 'technician.displayName' " class="fa fa-caret-down"></span>
                     </a>
-                  </th>
-                  <th>
-                    <a href="#" ng-click="vm.sortType = 'completed'">
+                  </td>
+                  <td>
+                    <a href="#" ng-click="vm.sortType = 'completed'; vm.sortReverse = !vm.sortReverse">
                       Done
-                      <span ng-show="vm.sortType == 'completed'; vm.sortReverse = !vm.sortReverse"" class="fa fa-caret-down"></span>
+                      <span ng-show="vm.sortType == 'completed'" class="fa fa-caret-down"></span>
                     </a>
-                  </th> 
+                  </td> 
                 </tr>
               </thead>
-              <tbody ng-repeat="job in vm.jobs | orderBy:vm.sortType:vm.sortReverse" ui-sref="jobs.view({jobId: job._id})">
-                  <td> {{job.name}} </td>
-                  <td> {{job.customer.name}} </td>
-                  <td> {{job.appointmentDatetime | date:'MM/dd/yyyy  h:mma'}}</td>
-                  <td> {{job.technician.displayName}} </td>
-                  <td> <span ng-if="job.completed" class="glyphicon glyphicon-ok"></span> <span ng-if="!job.completed" class="glyphicon glyphicon-remove"></span></td>
+              <tbody>
+                <tr ng-repeat="job in vm.jobs| orderBy:vm.sortType:vm.sortReverse | filter:vm.search">
+                    <td> <a ui-sref="jobs.view({jobId: job._id})">{{job.name}} </a> </td>
+                    <td> {{job.customer.name}} </td>
+                    <td> {{job.appointmentDatetime | date:'MM/dd/yyyy  h:mma'}}</td>
+                    <td> {{job.technician.displayName}} </td>
+                    <td> <span ng-show="job.completed" class="glyphicon glyphicon-ok"></span> <span ng-show="!job.completed" class="glyphicon glyphicon-remove"></span></td>
+                </tr>
               </tbody>
             </table>
           </div>
