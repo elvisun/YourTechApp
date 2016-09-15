@@ -155,7 +155,8 @@ exports.subscribe = function(req, res) {
 
 // Subscription event listener
 exports.listen = function(req,res) {
-  var event_json = JSON.parse(req.body);
+  console.log(req.body);
+  var event_json = req.body;
   stripe.events.retrieve(event_json.id, function(err, event) {
     // Do something with event
     console.log(event);
