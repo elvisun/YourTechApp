@@ -12,18 +12,18 @@ module.exports = function(app) {
     .get(customers.list)
     .post(customers.create);
 
-  app.route('/api/customers/:customerId').all(customersPolicy.isAllowed)
+  app.route('/api/customers/:customerId')
     .get(customers.read)
     .put(customers.update)
     .delete(customers.delete);
 
-  app.route('/api/customers/subscribe/:customerId').all(customersPolicy.isAllowed)
+  app.route('/api/customers/subscribe/:customerId')
     .post(customers.subscribe);
 
-  app.route('/webhooks').all(customersPolicy.isAllowed)
+  app.route('/webhooks')
     .post(customers.listen);
 
-  app.route('/webhooks-test').all(customersPolicy.isAllowed)
+  app.route('/webhooks-test')
     .post(customers.listen);
 
   // Finish by binding the Customer middleware
