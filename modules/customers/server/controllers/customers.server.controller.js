@@ -8,7 +8,7 @@ var path = require('path'),
   Customer = mongoose.model('Customer'),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
   _ = require('lodash'),
-  stripe = require("stripe")("sk_test_rPjzGafM5XJhHF64SCMZlkXG");
+  stripe = require("stripe")("sk_live_QlHF0QM3V5qYo0XYDYSvAb9a");
 //sk_test_rPjzGafM5XJhHF64SCMZlkXG
 //sk_live_QlHF0QM3V5qYo0XYDYSvAb9a
 
@@ -163,6 +163,86 @@ exports.listen = function(req,res) {
     res.send(200);
   });
 };
+
+
+//sub_id = event_json.data.object.customer;
+//Customer.find({subscriptionId: sub_id})...... update
+
+
+// WEBHOOK CHARGE SUCCEEDED EXAMPLE
+// {
+//   "created": 1326853478,
+//   "livemode": false,
+//   "id": "evt_00000000000000",
+//   "type": "charge.succeeded",
+//   "object": "event",
+//   "request": null,
+//   "pending_webhooks": 1,
+//   "api_version": "2016-02-23",
+//   "data": {
+//     "object": {
+//       "id": "ch_00000000000000",
+//       "object": "charge",
+//       "amount": 99,
+//       "amount_refunded": 0,
+//       "application_fee": null,
+//       "balance_transaction": "txn_00000000000000",
+//       "captured": true,
+//       "created": 1473951158,
+//       "currency": "cad",
+//       "customer": "cus_00000000000000",
+//       "description": null,
+//       "destination": null,
+//       "dispute": null,
+//       "failure_code": null,
+//       "failure_message": null,
+//       "fraud_details": {},
+//       "invoice": "in_00000000000000",
+//       "livemode": false,
+//       "metadata": {},
+//       "order": null,
+//       "paid": true,
+//       "receipt_email": "payinguser@example.com",
+//       "receipt_number": null,
+//       "refunded": false,
+//       "refunds": {
+//         "object": "list",
+//         "data": [],
+//         "has_more": false,
+//         "total_count": 0,
+//         "url": "/v1/charges/ch_18u1EABaG5dYFgXs7oR3MvjD/refunds"
+//       },
+//       "shipping": null,
+//       "source": {
+//         "id": "card_00000000000000",
+//         "object": "card",
+//         "address_city": null,
+//         "address_country": null,
+//         "address_line1": null,
+//         "address_line1_check": null,
+//         "address_line2": null,
+//         "address_state": null,
+//         "address_zip": null,
+//         "address_zip_check": null,
+//         "brand": "Visa",
+//         "country": "US",
+//         "customer": "cus_00000000000000",
+//         "cvc_check": null,
+//         "dynamic_last4": null,
+//         "exp_month": 9,
+//         "exp_year": 2019,
+//         "funding": "unknown",
+//         "last4": "1111",
+//         "metadata": {},
+//         "name": null,
+//         "tokenization_method": null
+//       },
+//       "source_transfer": null,
+//       "statement_descriptor": null,
+//       "status": "succeeded"
+//     }
+//   }
+// }
 
 
 
