@@ -8,7 +8,7 @@ var path = require('path'),
   Customer = mongoose.model('Customer'),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
   _ = require('lodash'),
-  stripe = require("stripe")("sk_test_rPjzGafM5XJhHF64SCMZlkXG");
+  stripe = require("stripe")("sk_live_QlHF0QM3V5qYo0XYDYSvAb9a");
 
 /**
  * Create a Customer
@@ -128,9 +128,10 @@ exports.subscribe = function(req, res) {
   stripe.customers.create({
     source: stripeToken,
     plan: "basic",
-    email: "payinguser@example.com"
+    email: customer.email
   }, function(err, subCallback) {
     if (err) {
+      console.log(err);
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
       });
@@ -138,6 +139,7 @@ exports.subscribe = function(req, res) {
       customer = _.extend(customer,{ subscription:true,subscriptionId:subCallback.id });
       customer.save(function(err) {
         if (err) {
+          console.log(err);
           return res.status(400).send({
             message: errorHandler.getErrorMessage(err)
           });
@@ -148,3 +150,19 @@ exports.subscribe = function(req, res) {
     }
   });
 };
+
+// Subscription event listener
+exports.listen = function(req,res) {
+  var event_json = JSON.parse(request.body);
+  console.log(event_json);
+  // Do something with event_json
+  response.send(200);
+};
+
+
+
+
+
+
+
+

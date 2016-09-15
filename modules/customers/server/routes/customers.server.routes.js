@@ -20,6 +20,9 @@ module.exports = function(app) {
   app.route('/api/customers/subscribe/:customerId').all(customersPolicy.isAllowed)
     .post(customers.subscribe);
 
+  app.route('/webhooks').all(customersPolicy.isAllowed)
+    .post(customers.listen);
+
   // Finish by binding the Customer middleware
   app.param('customerId', customers.customerByID);
 };
