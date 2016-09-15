@@ -23,6 +23,9 @@ module.exports = function(app) {
   app.route('/webhooks').all(customersPolicy.isAllowed)
     .post(customers.listen);
 
+  app.route('/webhooks-test').all(customersPolicy.isAllowed)
+    .post(customers.listen);
+
   // Finish by binding the Customer middleware
   app.param('customerId', customers.customerByID);
 };

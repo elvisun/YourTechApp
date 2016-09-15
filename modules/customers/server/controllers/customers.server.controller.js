@@ -8,7 +8,9 @@ var path = require('path'),
   Customer = mongoose.model('Customer'),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
   _ = require('lodash'),
-  stripe = require("stripe")("sk_live_QlHF0QM3V5qYo0XYDYSvAb9a");
+  stripe = require("stripe")("sk_test_rPjzGafM5XJhHF64SCMZlkXG");
+//sk_test_rPjzGafM5XJhHF64SCMZlkXG
+//sk_live_QlHF0QM3V5qYo0XYDYSvAb9a
 
 /**
  * Create a Customer
