@@ -68,12 +68,19 @@ change to icon -->
       <div class="row">
         <div class="col-md-6 col-md-offset-3">
           <h3>Current Subscription:   <span class="fa fa-check pull-right" ng-show="vm.customer.subscription"></span> <span class="fa fa-times pull-right" ng-hide="vm.customer.subscription"></span> </h3>
+          <h4>{{vm.customer.subscriptionType}}</h4>
           <div class="checkbox" ng-hide="vm.customer.subscription">
             <label>
               <input type="checkbox" ng-model=showForm>Add to Subscription list
             </label>
           
             <form stripe-form="stripeCallback" ng-show="showForm">
+            <h4>Subscription Type</h4>
+            <div class="btn-group">
+                <label class="btn btn-default" ng-model="vm.customer.subscriptionType" btn-radio="'Silver'" uncheckable>Silver</label>
+                <label class="btn btn-default" ng-model="vm.customer.subscriptionType" btn-radio="'Gold'" uncheckable>Gold</label>
+                <label class="btn btn-default" ng-model="vm.customer.subscriptionType" btn-radio="'Platnium'" uncheckable>Platnium</label>
+            </div>
             <h4>Credit Card Info</h4>
               <div class="form-group">
                 <input class="form-control" ng-model="number" placeholder="Card Number" payments-format="card" payments-validate="card" />
@@ -128,7 +135,7 @@ change to icon -->
   </small>
   <p class="lead" data-ng-bind="vm.customer.content"></p>
   <script>
-  Stripe.setPublishableKey('pk_live_EKHPojZoFLr1KjJjtp9NZoKY');
+  Stripe.setPublishableKey('pk_test_marMaaWHzbMssD7pvXBXZc2v');
   // pk_test_marMaaWHzbMssD7pvXBXZc2v
   // pk_live_EKHPojZoFLr1KjJjtp9NZoKY
   </script>

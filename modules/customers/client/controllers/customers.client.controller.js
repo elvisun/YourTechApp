@@ -23,7 +23,8 @@
         console.log('it failed! error: ' + result.error.message);
       } else {
         console.log('success! token: ' + result.id);
-        $http.post('/api/customers/subscribe/' + customer._id,{ stripeToken:result.id })
+        console.log(vm.customer);
+        $http.post('/api/customers/subscribe/' + customer._id,{ stripeToken:result.id, subscriptionType: vm.customer.subscriptionType})
           .then(function(response) {
             vm.customer = response.data;
           }, function(err){

@@ -49,7 +49,11 @@ var CustomerSchema = new Schema({
     type: Boolean,
     default: false
   },
-  subscriptionId: String
+  subscriptionId: String,
+  subscriptionType: {
+    type: String,
+    default: 'None'
+  }
 });
 
 mongoose.model('Customer', CustomerSchema);

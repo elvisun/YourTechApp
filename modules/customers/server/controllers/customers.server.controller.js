@@ -8,7 +8,7 @@ var path = require('path'),
   Customer = mongoose.model('Customer'),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
   _ = require('lodash'),
-  stripe = require("stripe")("sk_live_QlHF0QM3V5qYo0XYDYSvAb9a");
+  stripe = require("stripe")("sk_test_rPjzGafM5XJhHF64SCMZlkXG");
 //sk_test_rPjzGafM5XJhHF64SCMZlkXG
 //sk_live_QlHF0QM3V5qYo0XYDYSvAb9a
 
@@ -127,6 +127,9 @@ exports.customerByID = function(req, res, next, id) {
 exports.subscribe = function(req, res) {
   var stripeToken = req.body.stripeToken;
   var customer = req.customer;
+  console.log(customer);
+  console.log();
+  console.log(req.body);
   stripe.customers.create({
     source: stripeToken,
     plan: "basic",
@@ -138,7 +141,7 @@ exports.subscribe = function(req, res) {
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      customer = _.extend(customer,{ subscription:true,subscriptionId:subCallback.id });
+      customer = _.extend(customer,{subscription:true, subscriptionId:subCallback.id, subscriptionType:req.body.subscriptionType });
       customer.save(function(err) {
         if (err) {
           console.log(err);
